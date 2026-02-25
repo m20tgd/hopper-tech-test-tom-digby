@@ -1,0 +1,7 @@
+{
+    "name": "Report Generator Service",
+    "build": {
+        "dockerfile": "Dockerfile.dev"
+    },
+    "postCreateCommand": "npm install"
+}

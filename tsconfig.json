@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
-    "sourceMap": false
+    "sourceMap": true
   },
   "exclude": ["node_modules"],
   "extends": "@tsconfig/recommended/tsconfig.json"
