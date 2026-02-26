@@ -23,10 +23,10 @@ export async function lookupOperator(
   const delay = Math.floor(Math.random() * 200) + 100;
   await new Promise(resolve => setTimeout(resolve, delay));
 
-  // // Simulate ~5% failure rate
-  // if (Math.random() < 0.05) {
-  //   throw new Error('Operator lookup service temporarily unavailable');
-  // }
+  // Simulate ~5% failure rate
+  if (Math.random() < 0.05) {
+    throw new Error('Operator lookup service temporarily unavailable');
+  }
 
   // Mock operator data based on phone number prefix
   const phonePrefix = phoneNumber.substring(0, 3);

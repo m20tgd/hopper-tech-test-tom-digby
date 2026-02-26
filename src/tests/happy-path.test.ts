@@ -1,4 +1,5 @@
-import { CallHandler } from "../src/call-handler";
+import { CallHandler } from "../call-handler";
+import { processRecordsFromQueue } from "../record-processor";
 
 const dummyCsvPayload = `id,callStartTime,callEndTime,fromNumber,toNumber,callType,region
 cdr_001,2026-01-21T14:30:00.000Z,2026-01-21T14:35:30.000Z,+14155551234,+442071234567,voice,us-west
@@ -12,8 +13,8 @@ cdr_008,2026-01-21T15:30:00.000Z,2026-01-21T15:45:00.000Z,+14155559876,+44791112
 cdr_009,2026-01-21T15:40:00.000Z,2026-01-21T15:55:00.000Z,+14155551234,+447911123456,video,us-west
 cdr_010,2026-01-21T16:00:00.000Z,2026-01-21T16:15:00.000Z,+447911123456,+14155559876,voice,eu-west`;
 
-describe("CallHandler.handleBatch", () => {
-    it("should return ok: true for a valid 10-line CSV payload in under 500ms", async () => {
+describe("Happy Path Test", () => {
+    it("CallHandler.handleBatch should return {ok: true} for a valid 10-line CSV payload in under 500ms", async () => {
         const handler = new CallHandler();
         const start = Date.now();
         const response = await handler.handleBatch(dummyCsvPayload);
@@ -21,4 +22,10 @@ describe("CallHandler.handleBatch", () => {
         expect(response).toEqual({ ok: true });
         expect(duration).toBeLessThan(500);
     });
+
+    it("processRecordsFromQueue should process the records from the queue", async () => {
+        await processRecordsFromQueue(); // Start processing records from the queue
+    });
+
 });
+

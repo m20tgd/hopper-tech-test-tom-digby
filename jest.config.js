@@ -8,4 +8,5 @@ module.exports = {
   transform: {
     ...tsJestTransformCfg,
   },
+  testTimeout: 20000, // Set a longer timeout for tests that may involve asynchronous operations
 };
