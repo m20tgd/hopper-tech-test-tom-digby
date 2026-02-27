@@ -22,6 +22,7 @@
     "test": "npx jest"
   },
   "devDependencies": {
+    "@elastic/elasticsearch-mock": "^2.1.0",
     "@tsconfig/recommended": "^1.0.13",
     "@types/jest": "^30.0.0",
     "@types/papaparse": "^5.5.2",
@@ -29,9 +30,11 @@
     "ts-jest": "^29.4.6"
   },
   "dependencies": {
+    "@elastic/elasticsearch": "^9.3.2",
     "@types/level": "^6.0.3",
     "date-fns": "^4.1.0",
     "level": "^10.0.0",
-    "papaparse": "^5.5.3"
+    "papaparse": "^5.5.3",
+    "postgres": "^3.4.8"
   }
 }

@@ -1,6 +1,6 @@
 import Papa from 'papaparse';
-import { CallRecord } from './call-record.i';
-import { Queue } from './queue';
+import { CallRecord } from '../data-processing/call-record.i';
+import { Queue } from '../queue/queue';
 
 type Response = {
     ok: boolean;

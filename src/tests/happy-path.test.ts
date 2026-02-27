@@ -1,5 +1,5 @@
-import { CallHandler } from "../call-handler";
-import { processRecordsFromQueue } from "../record-processor";
+import { CallHandler } from "../handler/call-handler";
+import { processRecordsFromQueue } from "../data-processing/record-processor";
 
 const dummyCsvPayload = `id,callStartTime,callEndTime,fromNumber,toNumber,callType,region
 cdr_001,2026-01-21T14:30:00.000Z,2026-01-21T14:35:30.000Z,+14155551234,+442071234567,voice,us-west
@@ -23,7 +23,7 @@ describe("Happy Path Test", () => {
         expect(duration).toBeLessThan(500);
     });
 
-    it("processRecordsFromQueue should process the records from the queue", async () => {
+    it("processRecordsFromQueue should process the records from the queue without errors", async () => {
         await processRecordsFromQueue(); // Start processing records from the queue
     });
 

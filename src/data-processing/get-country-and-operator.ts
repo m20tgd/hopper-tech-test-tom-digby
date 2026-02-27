@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { lookupOperator, OperatorInfo } from "./api-mocks/operator-lookup";
+import { lookupOperator, OperatorInfo } from "../api-mocks/operator-lookup";
 
 export async function getOperatorInfo(phoneNumber: string, date: string): Promise<OperatorInfo> {
 
@@ -19,4 +19,5 @@ export async function getOperatorInfo(phoneNumber: string, date: string): Promis
     }
 
     return operatorInfo;
+    
 }

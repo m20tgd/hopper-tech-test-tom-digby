@@ -1,5 +1,5 @@
 import { Level } from 'level';
-import { CallRecord } from './call-record.i';
+import { CallRecord } from '../data-processing/call-record.i';
 
 export class Queue {
 
