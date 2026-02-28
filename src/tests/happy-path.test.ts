@@ -13,6 +13,20 @@ cdr_008,2026-01-21T15:30:00.000Z,2026-01-21T15:45:00.000Z,+14155559876,+44791112
 cdr_009,2026-01-21T15:40:00.000Z,2026-01-21T15:55:00.000Z,+14155551234,+447911123456,video,us-west
 cdr_010,2026-01-21T16:00:00.000Z,2026-01-21T16:15:00.000Z,+447911123456,+14155559876,voice,eu-west`;
 
+jest.mock('postgres', () => {
+  // The mock sql function, which can be called as a tagged template
+  const mockSql = (...args: any[]) => Promise.resolve({ count: 0, command: 'INSERT', fields: [], rows: [] });
+  // Also allow mockSql to be called as a function (for sql(records))
+  Object.assign(mockSql, {
+    // If you use sql(records) in your code, this should return something usable in the template
+    // You can return a dummy value or just the input
+    // For most cases, returning the input is fine
+    // If you need more, adjust as needed
+    [Symbol.for('postgres')]: true
+  });
+  return () => mockSql;
+});
+
 describe("Happy Path Test", () => {
     it("CallHandler.handleBatch should return {ok: true} for a valid 10-line CSV payload in under 500ms", async () => {
         const handler = new CallHandler();

@@ -3,6 +3,14 @@ import Mock from '@elastic/elasticsearch-mock';
 import { EnrichedCallRecord } from '../data-processing/call-record.i';
 
 const mock = new Mock();
+mock.add({
+  method: 'POST',
+  path: '/_bulk'
+}, () => {
+  // Return a dummy successful response
+  return { errors: false, items: [] };
+});
+
 const client = new Client({
   node: 'http://localhost:9200', 
   Connection: mock.getConnection()
