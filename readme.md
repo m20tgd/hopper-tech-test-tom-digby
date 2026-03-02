@@ -39,6 +39,8 @@ I assumed that it was ok for the handler to acknowledge successful receipt of th
 
 I made the assumption that all records passed via the API would be valid. I validate the data by ensuring the message is not empty (in line with the instructions) and that the data can be parsed to CSV. I do not check to make sure that the records contain the right fields or that the data in these fields are valid (e.g. that the call start and end times are valid ISO 8601 timestamps). In a real application I would implement this validation, but I felt it was out of scope for this exercise and that I had already demonstrated validation checks and error handling. I do not believe these checks would cause the handler to take more than 500ms to respond.
 
+I also made the assumption that the operator-lookup API would eventually be successful and return data. In a real application I would implement retry logic and a dead letter queue to handle cases where the API is consistently failing, but I felt this was out of scope for this exercise.
+
 ### Use of AI Tools
 
 I used AI as a research tool for this exercise (I use it instead of Google now for these purposes). I have GitHub Co-Pilot enabled in my VsCode and I used this for auto-completion. I also used it to boilerplate configuration files and the Jest test suite. I used it to create the mock Postgres and Elasticsearch clients, as I know from previous experience that creating mocks can be time consuming and technical and I didn't want to waste time doing this. All other code is my own work, sometimes based on suggestions from my AI based research. This exercise was completed by myself assisted by AI, not by AI alone. I understand the code I have written and am happy to discuss any part of it in more detail if required.
